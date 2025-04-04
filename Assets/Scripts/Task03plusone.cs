@@ -6,21 +6,23 @@ public class Task03plusone : MonoBehaviour
 {
     public class Solution
     {
-        public int MajorityElement(int[] nums)
+        public int[] PlusOne(int[] digits)
         {
-            int count = 0;
-            int major = 0;
-
-            foreach (int num in nums)
+            for (int i = digits.Length - 1; i >= 0; i--)
             {
-                if (count == 0)
+                if (digits[i] < 9)
                 {
-                    major = num;
+                    digits[i]++;
+                    return digits;
                 }
-                count += (num == major) ? 1 : -1;
+
+                digits[i] = 0;
             }
 
-            return major;
+            int[] result = new int[digits.Length + 1];
+            result[0] = 1;
+            return result;
         }
     }
+
 }
